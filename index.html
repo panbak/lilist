@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Title</title>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-sm navbar-dark elegant-color-dark">
+        <!-- Navbar brand -->
+        <a class="navbar-brand text-light" href="/">Linktree</a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse " id="basicExampleNav">
+            <ul class="navbar-nav ml-auto mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link text-light logged-in" href="#" id="account" data-toggle="modal" data-target="#accountModal">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light logged-in" href="#" id="logout">Logout</a>
+                </li>
+                <!--<li class="nav-item">
+                    <a class="nav-link logged-out" href="#" id="login">Login</a>
+                </li>-->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center" id="forms">
+            <div class="col-md-6">
+
+                <div class="card h-100">
+
+                    <h5 class="card-header elegant-color-dark white-text text-center py-4">
+                        <strong>Sign in</strong>
+                    </h5>
+
+                    <div class="card-body p-3">
+                        <form class="md-form" style="color: #757575;" id="login-form">
+
+                            <div class="md-form">
+                                <input type="text" id="email" class="form-control">
+                                <label for="email">Email</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="password" class="form-control">
+                                <label for="password">Password</label>
+                            </div>
+
+                            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Login</button>
+
+                            <div class="text-center">
+                                <p>or sign in with:</p>
+                                <a type="button" class="btn-floating btn-fb btn-sm">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a type="button" class="btn-floating btn-tw btn-sm">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="card h-100">
+
+                    <h5 class="card-header elegant-color-dark white-text text-center py-4">
+                        <strong>Sign up</strong>
+                    </h5>
+
+                    <div class="card-body p-3">
+                        <form class="md-form" style="color: #757575;" id="signup-form">
+
+                            <div class="md-form">
+                                <input type="text" id="signup-email" class="form-control">
+                                <label for="signup-email">Email</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="signup-password" class="form-control">
+                                <label for="signup-password">Password</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="password_verification" class="form-control">
+                                <label for="password_verification">Password Verification</label>
+                            </div>
+
+                            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5 mb-5" id="links-section">
+            <div class="col-12">
+                <label for="username" class="text-light">Your link</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">https://linktree.com/</span>
+                    </div>
+                    <input type="text" class="form-control" id="username" placeholder="enter a username">
+                    <div class="input-group-append">
+                        <button class="btn btn-md btn-light m-0 px-3 py-2 z-depth-0 waves-effect" type="button" id="copy-to-clipboard">Copy</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="list-group-item list-group-item-action flex-column align-items-start mb-3">
+                    <form id="add-link-form">
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="md-form w-25 mr-2">
+                            <select class="form-control" id="icon">
+                                <option class="fas fa-link" value="fas fa-link" selected>&#xf0c1; Link</option>
+                                <option class="fab fa-linkedin" value="fab fa-linkedin">&#xf08c; linkedin</option>
+                                <option class="fab fa-linkedin-in" value="fab fa-linkedin-in">&#xf0e1; linkedin</option>
+                                <option class="fab fa-facebook-f" value="fab fa-facebook-f">&#xf39e; facebook</option>
+                                <option class="fab fa-facebook-square" value="fab fa-facebook-square">&#xf082; facebook</option>
+                                <option class="fab fa-facebook" value="fab fa-facebook">&#xf09a; facebook</option>
+                                <option class="fab fa-instagram" value="fab fa-instagram">&#xf16d; instagram</option>
+                                <option class="fab fa-youtube" value="fab fa-youtube">&#xf167; youtube</option>
+                                <option class="fab fa-youtube-square" value="fab fa-youtube-square">&#xf431; youtube</option>
+                                <option class="fab fa-pinterest" value="fab fa-pinterest">&#xf0d2; pinterest</option>
+                                <option class="fab fa-pinterest-p" value="fab fa-pinterest-p">&#xf231; pinterest</option>
+                                <option class="fab fa-pinterest-square" value="fab fa-pinterest-square">&#xf0d3; pinterest</option>
+                                <option class="fab fa-behance" value="fab fa-behance">&#xf1b4; behance</option>
+                                <option class="fab fa-behance-square" value="fab fa-behance-square">&#xf1b5; behance</option>
+                                <option class="fab fa-twitter" value="fab fa-twitter">&#xf099; twitter</option>
+                                <option class="fab fa-twitter-square" value="fab fa-twitter-square">&#xf081; twitter</option>
+                                <option class="fab fa-dribbble" value="fab fa-dribbble">&#xf17d; dribbble</option>
+                                <option class="fab fa-dribbble-square" value="fab fa-dribbble-square">&#xf397; dribbble</option>
+                                <option class="fab fa-github" value="fab fa-github">&#xf09b; github</option>
+                                <option class="fab fa-github-alt" value="fab fa-github-alt">&#xf113; github</option>
+                                <option class="fab fa-github-square" value="fab fa-github-square">&#xf092; github</option>
+                            </select>
+                        </div>
+                        <div class="md-form w-25 mr-2 ml-2">
+                            <input type="text" id="title" class="form-control">
+                            <label for="title">Title</label>
+                        </div>
+                        <div class="md-form w-50 ml-2">
+                            <input type="text" id="url" class="form-control">
+                            <label for="url">Url</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-elegant mb-2" id="add-item-button">Add</button>
+                    </form>
+                </div>
+                <div class="list-group" id="links">
+
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border text-light" role="status" id="item-list-spinner">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="accountModal" tabindex="-1" role="dialog" aria-labelledby="accountModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="accountModalLabel">Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="account-details" class="mx-auto"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-elegant">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+
+        <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+        <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
+
+        <!-- Add Firebase products that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+        <script>
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseConfig = {
+                apiKey: "AIzaSyCY7EapcDnzGmdI6sxe8eBhW7wD9cSVeSs",
+                authDomain: "linktree-7a0cb.firebaseapp.com",
+                databaseURL: "https://linktree-7a0cb.firebaseio.com",
+                projectId: "linktree-7a0cb",
+                storageBucket: "linktree-7a0cb.appspot.com",
+                messagingSenderId: "232236277411",
+                appId: "1:232236277411:web:dc9c0a26c0c08910b1a916",
+                measurementId: "G-MDVBFNTHR6"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+            firebase.analytics();
+
+            db.settings({ timestampsInSnapshots: true });
+        </script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+        <script src="js/auth.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/link.js"></script>
+    </body>
+</html>
