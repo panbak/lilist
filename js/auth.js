@@ -2,11 +2,13 @@ var User;
 
 auth.onAuthStateChanged(user => {
     User = user || null;
-    //console.log(User.uid);
     setupUI(user);
     if(user){
         db.collection('links').where("author", "==", User.uid).orderBy("order", "asc").onSnapshot(snapshot => {
             setupLinkList(snapshot.docs);
+        });
+        db.collection('users').doc(User.uid).get().then(doc => {
+            document.querySelector('#username').value = doc.data().username;
         });
     }else{
         setupLinkList([]);
