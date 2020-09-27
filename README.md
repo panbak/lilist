@@ -1,5 +1,5 @@
 # lilist
-A serverless web application with firebase, that let you create a list of your social links and share it.
+A serverless single page application with firebase, that lets you create a list of your social links and share it.
 
 
 
